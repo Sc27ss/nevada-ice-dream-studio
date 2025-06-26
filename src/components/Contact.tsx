@@ -41,13 +41,13 @@ const Contact = () => {
             ¡Visítanos en <span className="nevada-text-gradient">NEVADA</span>!
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Te esperamos con los sabores más frescos y un ambiente familiar único. 
+            Te esperamos con los sabores más frescos y un ambiente único. 
             ¡Ven y crea momentos dulces con nosotros!
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 mb-12">
-          {/* Contact Information - Mejor organización */}
+          {/* Contact Information */}
           <div className="space-y-8">
             <h3 className="text-2xl font-bold text-gray-800 mb-6">Información de Contacto</h3>
             <div className="grid gap-6">
@@ -74,29 +74,31 @@ const Contact = () => {
               ))}
             </div>
 
-            {/* Social Media */}
-            <Card className="bg-gradient-to-r from-nevada-ice-blue to-nevada-pastel-blue border-0 shadow-lg nevada-shadow">
-              <CardHeader>
-                <CardTitle className="text-center text-gray-800">
-                  Síguenos en Redes Sociales
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex justify-center gap-6">
-                  {socialMedia.map((social, index) => (
-                    <div key={index} className="flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer group">
-                      <span className={`${social.color} group-hover:scale-110 transition-transform`}>
-                        {social.icon}
-                      </span>
-                      <span className="text-gray-700 font-medium">{social.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+            {/* Social Media - Centered */}
+            <div className="flex justify-center">
+              <Card className="bg-gradient-to-r from-nevada-ice-blue to-nevada-pastel-blue border-0 shadow-lg nevada-shadow w-full max-w-md">
+                <CardHeader>
+                  <CardTitle className="text-center text-gray-800">
+                    Síguenos en Redes Sociales
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex justify-center gap-6">
+                    {socialMedia.map((social, index) => (
+                      <div key={index} className="flex items-center gap-3 bg-white rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                        <span className={`${social.color} group-hover:scale-110 transition-transform`}>
+                          {social.icon}
+                        </span>
+                        <span className="text-gray-700 font-medium text-sm">{social.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
 
-          {/* Información de la tienda - Mejor disposición */}
+          {/* Store Information */}
           <div className="space-y-8">
             <h3 className="text-2xl font-bold text-gray-800 mb-6">¿Por qué visitarnos?</h3>
             
@@ -117,8 +119,8 @@ const Contact = () => {
                     <p className="text-gray-600">Cono, vaso, barquillo</p>
                   </div>
                   <div className="bg-pink-50 rounded-lg p-3">
-                    <p className="font-semibold text-pink-800">⭐ Ambiente:</p>
-                    <p className="text-gray-600">Familiar y acogedor</p>
+                    <p className="font-semibold text-pink-800">⭐ Calidad:</p>
+                    <p className="text-gray-600">Ingredientes premium</p>
                   </div>
                   <div className="bg-green-50 rounded-lg p-3">
                     <p className="font-semibold text-green-800">🏪 Parqueadero:</p>
@@ -130,20 +132,20 @@ const Contact = () => {
 
             <Card className="bg-gradient-to-br from-nevada-accent-pink to-nevada-soft-pink border-0 shadow-lg nevada-shadow">
               <CardContent className="p-6 text-center text-white">
-                <h4 className="text-xl font-bold mb-3">Ambiente Familiar</h4>
-                <p className="mb-4">Disfruta en un espacio diseñado para toda la familia</p>
+                <h4 className="text-xl font-bold mb-3">Comodidad Total</h4>
+                <p className="mb-4">Disfruta en un espacio diseñado para tu comodidad</p>
                 <div className="text-sm opacity-90 space-y-1">
-                  <p>🎈 Área especial para niños</p>
-                  <p>🪑 Mesas cómodas para familias</p>
+                  <p>🪑 Mesas cómodas</p>
                   <p>🎵 Ambiente musical agradable</p>
                   <p>❄️ Aire acondicionado</p>
+                  <p>🍽️ Área de degustación</p>
                 </div>
               </CardContent>
             </Card>
           </div>
         </div>
 
-        {/* Map placeholder - Mejorado */}
+        {/* Map placeholder */}
         <Card className="bg-nevada-ice-blue border-0 shadow-lg nevada-shadow">
           <CardContent className="p-8 text-center">
             <MapPin className="h-16 w-16 text-nevada-glacier-blue mx-auto mb-4" />
@@ -151,21 +153,17 @@ const Contact = () => {
               Encuéntranos Fácilmente
             </h3>
             <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              Estamos ubicados en el corazón de la ciudad, con fácil acceso en transporte público 
+              Estamos ubicados en el corazón de la ciudad, con fácil acceso 
               y parqueadero disponible para nuestros visitantes.
             </p>
-            <div className="grid md:grid-cols-3 gap-4 text-sm mb-6">
-              <div className="bg-white rounded-lg p-3">
-                <p className="font-semibold text-blue-800">🚌 Transporte Público</p>
-                <p className="text-gray-600">Rutas 15, 23, 45</p>
-              </div>
+            <div className="grid md:grid-cols-2 gap-4 text-sm mb-6">
               <div className="bg-white rounded-lg p-3">
                 <p className="font-semibold text-green-800">🚗 En Auto</p>
-                <p className="text-gray-600">Parqueadero gratis</p>
+                <p className="text-gray-600">Parqueadero gratis disponible</p>
               </div>
               <div className="bg-white rounded-lg p-3">
                 <p className="font-semibold text-purple-800">🚶 A Pie</p>
-                <p className="text-gray-600">Centro comercial</p>
+                <p className="text-gray-600">Fácil acceso desde el centro comercial</p>
               </div>
             </div>
           </CardContent>
