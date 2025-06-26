@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
 
@@ -91,26 +91,137 @@
   }
 }
 
-/* Custom Nevada Styles */
+/* Custom Nevada Styles Mejorados */
 .nevada-gradient {
-  background: linear-gradient(135deg, #E8F4FD 0%, #B8E6F0 50%, #87CEEB 100%);
+  background: linear-gradient(135deg, #FFFFFF 0%, #F0F9FF 25%, #E0F2FE 50%, #BAE6FD 75%, #7DD3FC 100%);
 }
 
 .nevada-text-gradient {
-  background: linear-gradient(135deg, #87CEEB, #B8E6F0);
+  background: linear-gradient(135deg, #1E40AF, #0EA5E9, #06B6D4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .nevada-shadow {
-  box-shadow: 0 10px 25px rgba(135, 206, 235, 0.15);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15), 0 10px 20px rgba(6, 182, 212, 0.1);
 }
 
 .nevada-glow {
-  box-shadow: 0 0 20px rgba(135, 206, 235, 0.3);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.4), 0 0 60px rgba(6, 182, 212, 0.2);
 }
 
 .ice-crystal {
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(232, 244, 253, 0.6) 100%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(240, 249, 255, 0.7) 100%);
+  filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.2));
+}
+
+/* Animaciones mejoradas */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) rotate(0deg); 
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translateY(-15px) rotate(2deg); 
+    opacity: 1;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1) rotate(0deg); 
+  }
+  25% { 
+    opacity: 0.4; 
+    transform: scale(1.2) rotate(90deg); 
+  }
+  50% { 
+    opacity: 0.8; 
+    transform: scale(0.9) rotate(180deg); 
+  }
+  75% { 
+    opacity: 0.6; 
+    transform: scale(1.1) rotate(270deg); 
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+.animate-slide-in {
+  animation: slideInFromBottom 0.8s ease-out forwards;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 1s ease-out forwards;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* Efectos hover mejorados */
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.6), 0 0 80px rgba(6, 182, 212, 0.3);
+  transition: box-shadow 0.4s ease-in-out;
+}
+
+/* Estilo de texto mejorado */
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-lg {
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
 }
