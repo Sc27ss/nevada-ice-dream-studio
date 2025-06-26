@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { IceCreamCone, IceCreamBowl, Smile, Star, Award, Heart, MapPin } from 'lucide-react';
+import { IceCreamCone, IceCreamBowl, Smile, Star, Award, Heart, MapPin, ImageIcon } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -174,47 +174,54 @@ const Menu = () => {
           </div>
         </div>
 
-        {/* Category Tabs mejorados */}
-        <div className="flex justify-center mb-16">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-3 shadow-xl border border-blue-100">
-            {Object.entries(menuData).map(([key, category]) => (
-              <Button
-                key={key}
-                variant={activeCategory === key ? "default" : "ghost"}
-                className={`rounded-xl px-8 py-4 mx-2 transition-all duration-300 font-semibold ${
-                  activeCategory === key
-                    ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg transform scale-105'
-                    : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
-                }`}
-                onClick={() => setActiveCategory(key)}
-              >
-                <span className="flex items-center gap-3">
-                  {category.icon}
-                  <div className="text-left">
-                    <div className="text-sm font-bold">{category.title}</div>
-                    <div className="text-xs opacity-80">{category.description}</div>
+        {/* Category Tabs mejorados - Más separación */}
+        <div className="flex justify-center mb-20">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-blue-100">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {Object.entries(menuData).map(([key, category]) => (
+                <Button
+                  key={key}
+                  variant={activeCategory === key ? "default" : "ghost"}
+                  className={`rounded-xl px-6 py-6 transition-all duration-300 font-semibold min-h-[100px] ${
+                    activeCategory === key
+                      ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg transform scale-105'
+                      : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
+                  }`}
+                  onClick={() => setActiveCategory(key)}
+                >
+                  <div className="flex flex-col items-center gap-3 text-center">
+                    <div className="text-2xl">{category.icon}</div>
+                    <div>
+                      <div className="text-base font-bold">{category.title}</div>
+                      <div className="text-xs opacity-80 mt-1">{category.description}</div>
+                    </div>
                   </div>
-                </span>
-              </Button>
-            ))}
+                </Button>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Menu Items mejorados */}
+        {/* Menu Items mejorados con espacio para imágenes */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {menuData[activeCategory as keyof typeof menuData].items.map((item, index) => (
             <Card key={index} className="hover:shadow-2xl transition-all duration-500 border-0 bg-white/95 backdrop-blur-sm overflow-hidden group hover:-translate-y-2">
-              <CardHeader className="pb-4 bg-gradient-to-br from-blue-50 to-cyan-50">
-                <div className="flex justify-between items-start mb-2">
-                  <CardTitle className="text-xl font-bold text-slate-800 flex items-center gap-3">
-                    {item.name}
-                    {item.popular && (
-                      <Badge className="bg-gradient-to-r from-pink-500 to-rose-400 text-white text-xs font-semibold">
-                        ¡Popular!
-                      </Badge>
-                    )}
-                  </CardTitle>
+              {/* Espacio para imagen */}
+              <div className="h-48 bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center">
+                <ImageIcon className="h-16 w-16 text-blue-400 opacity-50" />
+                <div className="absolute top-4 right-4">
+                  {item.popular && (
+                    <Badge className="bg-gradient-to-r from-pink-500 to-rose-400 text-white text-xs font-semibold">
+                      ¡Popular!
+                    </Badge>
+                  )}
                 </div>
+              </div>
+              
+              <CardHeader className="pb-4">
+                <CardTitle className="text-xl font-bold text-slate-800 mb-2">
+                  {item.name}
+                </CardTitle>
                 <div className="flex items-center gap-1 mb-3">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className={`w-4 h-4 ${i < Math.floor(item.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />
@@ -242,7 +249,7 @@ const Menu = () => {
           ))}
         </div>
 
-        {/* Promociones mejoradas */}
+        {/* Promociones mejoradas con espacio para imágenes */}
         <div className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 rounded-3xl p-10 shadow-2xl border-4 border-white/20">
           <h3 className="text-4xl font-bold text-center text-white mb-10">
             ✨ Combos Especiales ✨
@@ -250,7 +257,12 @@ const Menu = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {combos.map((combo, index) => (
               <Card key={index} className="bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
-                <CardHeader className="text-center bg-gradient-to-br from-slate-50 to-blue-50">
+                {/* Espacio para imagen */}
+                <div className="h-40 bg-gradient-to-br from-slate-100 to-blue-100 flex items-center justify-center">
+                  <ImageIcon className="h-12 w-12 text-slate-400 opacity-50" />
+                </div>
+                
+                <CardHeader className="text-center">
                   <div className="flex justify-center mb-4">
                     <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full text-white">
                       {combo.icon}

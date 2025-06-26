@@ -1,136 +1,211 @@
 
-import React from 'react';
-import { Heart, Users, Award, Sparkles } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import React, { useState, useEffect, useRef } from 'react';
+import { Award, Heart, Users, Clock } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const About = () => {
-  const values = [
-    {
-      icon: <Heart className="h-8 w-8 text-nevada-accent-pink" />,
-      title: 'Hecho con Amor',
-      description: 'Cada helado es preparado artesanalmente con ingredientes seleccionados y mucho cariño.'
+  const [yearsCount, setYearsCount] = useState(0);
+  const [clientsCount, setClientsCount] = useState(0);
+  const [flavorsCount, setFlavorsCount] = useState(0);
+  const [happinessCount, setHappinessCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const statsRef = useRef<HTMLDivElement>(null);
+
+  // Intersection Observer para detectar cuando la sección es visible
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  // Animaciones de conteo cuando la sección es visible
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const timer1 = setTimeout(() => {
+      const interval1 = setInterval(() => {
+        setYearsCount(prev => prev < 15 ? prev + 1 : 15);
+      }, 80);
+      setTimeout(() => clearInterval(interval1), 1200);
+    }, 300);
+
+    const timer2 = setTimeout(() => {
+      const interval2 = setInterval(() => {
+        setClientsCount(prev => prev < 5000 ? prev + 100 : 5000);
+      }, 40);
+      setTimeout(() => clearInterval(interval2), 2000);
+    }, 600);
+
+    const timer3 = setTimeout(() => {
+      const interval3 = setInterval(() => {
+        setFlavorsCount(prev => prev < 50 ? prev + 2 : 50);
+      }, 60);
+      setTimeout(() => clearInterval(interval3), 1500);
+    }, 900);
+
+    const timer4 = setTimeout(() => {
+      const interval4 = setInterval(() => {
+        setHappinessCount(prev => prev < 100 ? prev + 5 : 100);
+      }, 50);
+      setTimeout(() => clearInterval(interval4), 1000);
+    }, 1200);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      clearTimeout(timer4);
+    };
+  }, [isVisible]);
+
+  const stats = [
+    { 
+      icon: <Clock className="h-8 w-8 text-blue-500" />, 
+      value: yearsCount, 
+      suffix: "+", 
+      label: "Años de experiencia",
+      color: "text-blue-600"
     },
-    {
-      icon: <Users className="h-8 w-8 text-nevada-glacier-blue" />,
-      title: 'Ambiente Familiar',
-      description: 'Un espacio diseñado para que toda la familia disfrute momentos especiales juntos.'
+    { 
+      icon: <Users className="h-8 w-8 text-green-500" />, 
+      value: clientsCount, 
+      suffix: "+", 
+      label: "Familias satisfechas",
+      color: "text-green-600"
     },
-    {
-      icon: <Award className="h-8 w-8 text-nevada-pastel-blue" />,
-      title: 'Calidad Premium',
-      description: 'Utilizamos solo los mejores ingredientes para garantizar sabores únicos y memorables.'
+    { 
+      icon: <Award className="h-8 w-8 text-purple-500" />, 
+      value: flavorsCount, 
+      suffix: "+", 
+      label: "Sabores únicos",
+      color: "text-purple-600"
     },
-    {
-      icon: <Sparkles className="h-8 w-8 text-nevada-accent-pink" />,
-      title: 'Experiencia Única',
-      description: 'Creamos momentos mágicos que perduran en la memoria de nuestros clientes.'
+    { 
+      icon: <Heart className="h-8 w-8 text-pink-500" />, 
+      value: happinessCount, 
+      suffix: "%", 
+      label: "Sonrisas garantizadas",
+      color: "text-pink-600"
     }
   ];
 
-  const stats = [
-    { number: '2025', label: 'Año de Fundación' },
-    { number: '25+', label: 'Sabores Únicos' },
-    { number: '100%', label: 'Artesanal' },
-    { number: '1000+', label: 'Familias Felices' }
-  ];
-
   return (
-    <section id="nosotros" className="py-20 bg-gradient-to-b from-nevada-snow to-nevada-ice-blue">
+    <section id="nosotros" className="py-20 bg-gradient-to-br from-nevada-snow via-white to-nevada-ice-blue">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
-            Conoce <span className="nevada-text-gradient">NEVADA</span>
+            Nuestra <span className="nevada-text-gradient">Historia</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Somos una heladería moderna comprometida con ofrecer los sabores más frescos 
-            y deliciosos en un ambiente acogedor donde las familias crean recuerdos inolvidables.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            Más de una década creando momentos dulces y memorables para familias como la tuya
           </p>
         </div>
 
-        {/* Story Section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+        {/* Estadísticas animadas */}
+        <div ref={statsRef} className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {stats.map((stat, index) => (
+            <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 text-center p-6 nevada-shadow">
+              <CardContent className="p-0">
+                <div className="flex justify-center mb-4">
+                  <div className="p-3 bg-gradient-to-br from-nevada-ice-blue to-nevada-pastel-blue rounded-full">
+                    {stat.icon}
+                  </div>
+                </div>
+                <div className={`text-3xl lg:text-4xl font-bold ${stat.color} mb-2`}>
+                  {stat.value}{stat.suffix}
+                </div>
+                <p className="text-gray-600 text-sm font-medium">{stat.label}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Story Content */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h3 className="text-3xl font-bold text-gray-800">
-              Nuestra Historia
+              Una tradición familiar que perdura
             </h3>
-            <div className="space-y-4 text-gray-700 leading-relaxed">
-              <p>
-                NEVADA nació de la pasión por crear momentos dulces y especiales para las familias. 
-                Nos inspiramos en la pureza y frescura de la nieve para desarrollar helados 
-                artesanales que despiertan sonrisas en cada cucharada.
-              </p>
-              <p>
-                Nuestro equipo de heladeros expertos trabaja día a día para perfeccionar 
-                recetas únicas, combinando técnicas tradicionales con innovación moderna 
-                para crear sabores que sorprenden y deleitan.
-              </p>
-              <p>
-                En NEVADA, cada visita es una experiencia memorable donde la calidad, 
-                el sabor y la calidez humana se unen para crear momentos perfectos.
-              </p>
-            </div>
+            <p className="text-gray-600 leading-relaxed">
+              NEVADA nació del sueño de crear helados únicos que despertaran sonrisas auténticas. 
+              Desde nuestros inicios, hemos mantenido el compromiso de usar solo los mejores 
+              ingredientes y técnicas artesanales que nos han convertido en el lugar favorito 
+              de las familias de la ciudad.
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              Cada helado que servimos lleva consigo la pasión y dedicación de un equipo que 
+              cree en la magia de los momentos compartidos. Nuestros sabores únicos y la 
+              calidez de nuestro servicio han creado una comunidad de amantes del helado 
+              que nos visitan una y otra vez.
+            </p>
           </div>
 
-          {/* Visual representation */}
           <div className="relative">
-            <div className="bg-white rounded-3xl p-8 shadow-2xl nevada-shadow">
-              <div className="grid grid-cols-2 gap-4">
-                {stats.map((stat, index) => (
-                  <div key={index} className="text-center p-4 rounded-2xl bg-nevada-ice-blue">
-                    <div className="text-3xl font-bold text-nevada-glacier-blue mb-2">
-                      {stat.number}
-                    </div>
-                    <div className="text-sm text-gray-600 font-medium">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-8 h-8 bg-nevada-accent-pink rounded-full animate-sparkle" />
-            <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-nevada-vanilla rounded-full animate-float opacity-80" />
+            <Card className="bg-gradient-to-br from-nevada-pastel-blue to-nevada-ice-blue border-0 shadow-xl nevada-shadow p-8">
+              <CardHeader className="text-center pb-6">
+                <CardTitle className="text-2xl text-gray-800">
+                  Nuestra Misión
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-800 text-center leading-relaxed font-medium text-lg">
+                  Crear experiencias inolvidables a través de helados artesanales excepcionales, 
+                  fomentando la conexión familiar y comunitaria en un ambiente cálido y acogedor 
+                  donde cada visita se convierte en un momento especial.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
 
         {/* Values */}
-        <div className="mb-16">
-          <h3 className="text-3xl font-bold text-gray-800 text-center mb-12">
+        <div className="mt-20">
+          <h3 className="text-3xl font-bold text-center text-gray-800 mb-12">
             Nuestros Valores
           </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 nevada-shadow">
-                <CardContent className="p-6 text-center">
-                  <div className="flex justify-center mb-4">
-                    <div className="p-3 bg-nevada-ice-blue rounded-full">
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Award className="h-12 w-12 text-nevada-glacier-blue" />,
+                title: "Calidad Premium",
+                description: "Ingredientes de primera calidad seleccionados cuidadosamente para cada preparación"
+              },
+              {
+                icon: <Heart className="h-12 w-12 text-nevada-accent-pink" />,
+                title: "Pasión Familiar",
+                description: "Cada helado está hecho con amor y dedicación para crear momentos especiales"
+              },
+              {
+                icon: <Users className="h-12 w-12 text-nevada-pastel-blue" />,
+                title: "Comunidad",
+                description: "Somos parte de tu familia, creando lazos que van más allá del helado"
+              }
+            ].map((value, index) => (
+              <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 text-center p-6 nevada-shadow hover:nevada-glow">
+                <CardContent className="p-0">
+                  <div className="flex justify-center mb-6">
+                    <div className="p-4 bg-nevada-ice-blue rounded-full">
                       {value.icon}
                     </div>
                   </div>
-                  <h4 className="text-lg font-semibold text-gray-800 mb-3">
-                    {value.title}
-                  </h4>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {value.description}
-                  </p>
+                  <h4 className="text-xl font-bold text-gray-800 mb-4">{value.title}</h4>
+                  <p className="text-gray-600 leading-relaxed">{value.description}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
-        </div>
-
-        {/* Mission Statement */}
-        <div className="bg-gradient-to-r from-nevada-glacier-blue to-nevada-pastel-blue rounded-3xl p-12 text-center nevada-shadow">
-          <h3 className="text-3xl font-bold text-white mb-6">
-            Nuestra Misión
-          </h3>
-          <p className="text-xl text-white/90 max-w-4xl mx-auto leading-relaxed">
-            "Crear momentos de felicidad a través de helados artesanales excepcionales, 
-            ofreciendo una experiencia familiar única donde cada visita se convierte en 
-            un recuerdo especial lleno de sabor, frescura y alegría."
-          </p>
         </div>
       </div>
     </section>

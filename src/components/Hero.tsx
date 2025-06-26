@@ -148,32 +148,32 @@ const Hero = () => {
               </Button>
             </div>
 
-            {/* Estadísticas animadas mejoradas */}
-            <div className="grid grid-cols-3 gap-8 pt-12">
-              <div className="text-center p-4 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-blue-100">
-                <div className="text-4xl font-bold text-blue-600 mb-2">
+            {/* Estadísticas animadas mejoradas - Ampliadas */}
+            <div className="grid grid-cols-3 gap-6 pt-12">
+              <div className="text-center p-6 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-blue-100 min-h-[120px] flex flex-col justify-center">
+                <div className="text-3xl lg:text-4xl font-bold text-blue-600 mb-2">
                   {flavorsCount}+
                 </div>
-                <div className="text-sm font-semibold text-slate-700 uppercase tracking-wide">
+                <div className="text-xs lg:text-sm font-semibold text-slate-700 uppercase tracking-wide leading-tight">
                   Sabores Únicos
                 </div>
               </div>
-              <div className="text-center p-4 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-pink-100">
-                <div className="text-4xl font-bold text-pink-500 mb-2">
+              <div className="text-center p-6 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-pink-100 min-h-[120px] flex flex-col justify-center">
+                <div className="text-3xl lg:text-4xl font-bold text-pink-500 mb-2">
                   {qualityCount}%
                 </div>
-                <div className="text-sm font-semibold text-slate-700 uppercase tracking-wide">
+                <div className="text-xs lg:text-sm font-semibold text-slate-700 uppercase tracking-wide leading-tight">
                   Artesanal
                 </div>
               </div>
-              <div className="text-center p-4 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-blue-100">
-                <div className="text-4xl font-bold text-blue-600 mb-2 flex items-center justify-center gap-1">
+              <div className="text-center p-6 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-blue-100 min-h-[120px] flex flex-col justify-center">
+                <div className="text-3xl lg:text-4xl font-bold text-blue-600 mb-2 flex items-center justify-center gap-1">
                   {starsCount}
                   {[...Array(Math.floor(starsCount))].map((_, i) => (
-                    <span key={i} className="text-yellow-400 animate-pulse">★</span>
+                    <span key={i} className="text-yellow-400 animate-pulse text-lg">★</span>
                   ))}
                 </div>
-                <div className="text-sm font-semibold text-slate-700 uppercase tracking-wide">
+                <div className="text-xs lg:text-sm font-semibold text-slate-700 uppercase tracking-wide leading-tight">
                   Experiencia
                 </div>
               </div>

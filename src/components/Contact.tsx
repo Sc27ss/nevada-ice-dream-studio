@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { MapPin, Clock, Phone, Mail, Instagram, Facebook } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Contact = () => {
@@ -19,12 +18,12 @@ const Contact = () => {
     {
       icon: <Phone className="h-6 w-6 text-nevada-pastel-blue" />,
       title: 'Teléfono',
-      details: ['+57 (1) 234-5678', 'WhatsApp: +57 300 123 4567', 'Pedidos y reservas']
+      details: ['+57 (1) 234-5678', 'WhatsApp: +57 300 123 4567', 'Consultas y reservas']
     },
     {
       icon: <Mail className="h-6 w-6 text-nevada-glacier-blue" />,
       title: 'Email',
-      details: ['info@nevadaheladeria.com', 'pedidos@nevadaheladeria.com', 'Respuesta en 2 horas']
+      details: ['info@nevadaheladeria.com', 'contacto@nevadaheladeria.com', 'Respuesta en 2 horas']
     }
   ];
 
@@ -39,7 +38,7 @@ const Contact = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6">
-            ¡Visitanos en <span className="nevada-text-gradient">NEVADA</span>!
+            ¡Visítanos en <span className="nevada-text-gradient">NEVADA</span>!
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Te esperamos con los sabores más frescos y un ambiente familiar único. 
@@ -47,10 +46,11 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 mb-12">
-          {/* Contact Information */}
-          <div className="lg:col-span-2 space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid lg:grid-cols-2 gap-12 mb-12">
+          {/* Contact Information - Mejor organización */}
+          <div className="space-y-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">Información de Contacto</h3>
+            <div className="grid gap-6">
               {contactInfo.map((info, index) => (
                 <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 nevada-shadow">
                   <CardHeader className="pb-3">
@@ -96,56 +96,78 @@ const Contact = () => {
             </Card>
           </div>
 
-          {/* CTA Section */}
-          <div className="space-y-6">
+          {/* Información de la tienda - Mejor disposición */}
+          <div className="space-y-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">¿Por qué visitarnos?</h3>
+            
             <Card className="bg-white border-0 shadow-lg nevada-shadow">
               <CardHeader className="text-center">
-                <CardTitle className="text-2xl text-gray-800">
-                  ¿Listo para tu Helado?
+                <CardTitle className="text-xl text-gray-800">
+                  Experiencia Completa
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-gray-600 text-center">
-                  Haz tu pedido ahora y disfruta de nuestros sabores únicos
-                </p>
-                <div className="space-y-3">
-                  <Button className="w-full bg-nevada-glacier-blue hover:bg-nevada-pastel-blue text-white py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 nevada-glow">
-                    Haz tu Pedido
-                  </Button>
-                  <Button variant="outline" className="w-full border-nevada-glacier-blue text-nevada-glacier-blue hover:bg-nevada-ice-blue py-3 rounded-full">
-                    Ver Menú Completo
-                  </Button>
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <div className="bg-blue-50 rounded-lg p-3">
+                    <p className="font-semibold text-blue-800">🍦 Tamaños:</p>
+                    <p className="text-gray-600">1, 2 o 3 bolas</p>
+                  </div>
+                  <div className="bg-cyan-50 rounded-lg p-3">
+                    <p className="font-semibold text-cyan-800">🥄 Presentaciones:</p>
+                    <p className="text-gray-600">Cono, vaso, barquillo</p>
+                  </div>
+                  <div className="bg-pink-50 rounded-lg p-3">
+                    <p className="font-semibold text-pink-800">⭐ Ambiente:</p>
+                    <p className="text-gray-600">Familiar y acogedor</p>
+                  </div>
+                  <div className="bg-green-50 rounded-lg p-3">
+                    <p className="font-semibold text-green-800">🏪 Parqueadero:</p>
+                    <p className="text-gray-600">Disponible gratis</p>
+                  </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Quick Info */}
             <Card className="bg-gradient-to-br from-nevada-accent-pink to-nevada-soft-pink border-0 shadow-lg nevada-shadow">
               <CardContent className="p-6 text-center text-white">
-                <h3 className="text-xl font-bold mb-3">Delivery Gratis</h3>
-                <p className="mb-4">En pedidos superiores a $25.000</p>
-                <div className="text-sm opacity-90">
-                  <p>⏰ Tiempo promedio: 30 min</p>
-                  <p>📍 Radio de cobertura: 5 km</p>
+                <h4 className="text-xl font-bold mb-3">Ambiente Familiar</h4>
+                <p className="mb-4">Disfruta en un espacio diseñado para toda la familia</p>
+                <div className="text-sm opacity-90 space-y-1">
+                  <p>🎈 Área especial para niños</p>
+                  <p>🪑 Mesas cómodas para familias</p>
+                  <p>🎵 Ambiente musical agradable</p>
+                  <p>❄️ Aire acondicionado</p>
                 </div>
               </CardContent>
             </Card>
           </div>
         </div>
 
-        {/* Map placeholder */}
+        {/* Map placeholder - Mejorado */}
         <Card className="bg-nevada-ice-blue border-0 shadow-lg nevada-shadow">
           <CardContent className="p-8 text-center">
             <MapPin className="h-16 w-16 text-nevada-glacier-blue mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-gray-800 mb-2">
               Encuéntranos Fácilmente
             </h3>
-            <p className="text-gray-600 mb-4">
-              Estamos ubicados en el corazón de la ciudad, con fácil acceso y parqueadero disponible
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Estamos ubicados en el corazón de la ciudad, con fácil acceso en transporte público 
+              y parqueadero disponible para nuestros visitantes.
             </p>
-            <Button className="bg-nevada-glacier-blue hover:bg-nevada-pastel-blue text-white px-8 py-3 rounded-full shadow-lg">
-              Ver en Google Maps
-            </Button>
+            <div className="grid md:grid-cols-3 gap-4 text-sm mb-6">
+              <div className="bg-white rounded-lg p-3">
+                <p className="font-semibold text-blue-800">🚌 Transporte Público</p>
+                <p className="text-gray-600">Rutas 15, 23, 45</p>
+              </div>
+              <div className="bg-white rounded-lg p-3">
+                <p className="font-semibold text-green-800">🚗 En Auto</p>
+                <p className="text-gray-600">Parqueadero gratis</p>
+              </div>
+              <div className="bg-white rounded-lg p-3">
+                <p className="font-semibold text-purple-800">🚶 A Pie</p>
+                <p className="text-gray-600">Centro comercial</p>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>
