@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { IceCreamCone, IceCreamBowl, Smile, Star, Award, Heart } from 'lucide-react';
+import { IceCreamCone, IceCreamBowl, Smile, Star, Award, Heart, MapPin } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -17,35 +17,35 @@ const Menu = () => {
         { 
           name: 'Vainilla Premium', 
           description: 'Cremosa vainilla con esencia natural de Madagascar', 
-          price: '$ 8.000', 
+          pricePerScoop: '$ 4.000', 
           popular: true,
           rating: 4.9
         },
         { 
           name: 'Fresa Natural', 
           description: 'Con trozos de fresa fresca colombiana', 
-          price: '$ 8.500', 
+          pricePerScoop: '$ 4.200', 
           popular: false,
           rating: 4.7
         },
         { 
           name: 'Chocolate Belga', 
           description: 'Intenso chocolate importado de Bélgica', 
-          price: '$ 9.000', 
+          pricePerScoop: '$ 4.500', 
           popular: true,
           rating: 4.8
         },
         { 
           name: 'Arequipe Artesanal', 
           description: 'Dulce de leche casero tradicional', 
-          price: '$ 9.500', 
+          pricePerScoop: '$ 4.800', 
           popular: false,
           rating: 4.6
         },
         { 
           name: 'Limón Refrescante', 
           description: 'Cítrico natural y revitalizante', 
-          price: '$ 8.000', 
+          pricePerScoop: '$ 4.000', 
           popular: false,
           rating: 4.5
         }
@@ -59,28 +59,28 @@ const Menu = () => {
         { 
           name: 'Cheesecake con Fresa', 
           description: 'Cremoso queso Philadelphia con salsa de fresa', 
-          price: '$ 12.000', 
+          pricePerScoop: '$ 6.000', 
           popular: true,
           rating: 4.9
         },
         { 
           name: 'Brownie con Nuez', 
           description: 'Chocolate intenso con nueces pecanas crujientes', 
-          price: '$ 11.500', 
+          pricePerScoop: '$ 5.800', 
           popular: true,
           rating: 4.8
         },
         { 
           name: 'Mango Biche', 
           description: 'Tropical y refrescante con toque picante', 
-          price: '$ 10.000', 
+          pricePerScoop: '$ 5.000', 
           popular: false,
           rating: 4.7
         },
         { 
           name: 'Café con Leche', 
           description: 'Aromático café colombiano premium', 
-          price: '$ 10.500', 
+          pricePerScoop: '$ 5.200', 
           popular: false,
           rating: 4.6
         }
@@ -94,35 +94,35 @@ const Menu = () => {
         { 
           name: 'Malteadas Especiales', 
           description: 'Cremosas y espesas, preparadas al momento', 
-          price: '$ 12.000', 
+          pricePerScoop: '$ 12.000', 
           popular: true,
           rating: 4.8
         },
         { 
           name: 'Conos Premium', 
           description: 'Crujientes y dorados, horneados diariamente', 
-          price: '$ 2.000', 
+          pricePerScoop: '$ 2.000', 
           popular: false,
           rating: 4.5
         },
         { 
           name: 'Barquillos Artesanales', 
           description: 'Hechos en casa con receta familiar', 
-          price: '$ 3.000', 
+          pricePerScoop: '$ 3.000', 
           popular: false,
           rating: 4.6
         },
         { 
           name: 'Banana Split Familiar', 
-          description: 'Experiencia completa para compartir', 
-          price: '$ 18.000', 
+          description: 'Experiencia completa para compartir (3 bolas)', 
+          pricePerScoop: '$ 18.000', 
           popular: true,
           rating: 4.9
         },
         { 
           name: 'Paletas de Fruta', 
           description: 'Naturales sin conservantes artificiales', 
-          price: '$ 6.000', 
+          pricePerScoop: '$ 6.000', 
           popular: false,
           rating: 4.4
         }
@@ -130,26 +130,26 @@ const Menu = () => {
     }
   };
 
-  const promos = [
+  const combos = [
     {
       title: 'Combo Familiar Nevada',
-      description: '4 helados premium + 2 malteadas + toppings especiales',
+      description: '4 helados de 2 bolas + 2 conos premium + toppings especiales',
       price: '$ 35.000',
       badge: 'Ahorra $ 10.000',
       icon: <Heart className="h-5 w-5" />
     },
     {
       title: 'Combo Niños Felices',
-      description: '1 helado + juguete sorpresa + stickers Nevada',
-      price: '$ 12.000',
-      badge: 'Incluye Sorpresa',
+      description: '1 helado de 1 bola + cono + decoración especial',
+      price: '$ 8.000',
+      badge: 'Incluye Decoración',
       icon: <Smile className="h-5 w-5" />
     },
     {
       title: 'Línea Saludable',
       description: 'Opciones endulzadas con stevia natural',
-      price: '$ 9.500',
-      badge: 'Sin Azúcar',
+      price: '$ 4.500',
+      badge: 'Sin Azúcar Añadida',
       icon: <Award className="h-5 w-5" />
     }
   ];
@@ -160,14 +160,18 @@ const Menu = () => {
         {/* Header mejorado */}
         <div className="text-center mb-20">
           <h2 className="text-5xl lg:text-6xl font-bold mb-6">
-            <span className="text-slate-800">Nuestro </span>
-            <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 bg-clip-text text-transparent">Menú</span>
+            <span className="text-slate-800">Nuestros </span>
+            <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 bg-clip-text text-transparent">Sabores</span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">
             Descubre nuestra selección de sabores únicos, preparados artesanalmente 
             con los mejores ingredientes premium para toda la familia. 
             <span className="text-blue-600 font-semibold block mt-2">¡Cada sabor cuenta una historia!</span>
           </p>
+          <div className="flex items-center justify-center gap-2 mt-6 text-slate-700">
+            <MapPin className="h-5 w-5 text-blue-600" />
+            <span className="font-medium">Tienda física - Ven y disfruta en nuestro local</span>
+          </div>
         </div>
 
         {/* Category Tabs mejorados */}
@@ -199,7 +203,7 @@ const Menu = () => {
         {/* Menu Items mejorados */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {menuData[activeCategory as keyof typeof menuData].items.map((item, index) => (
-            <Card key={index} className="hover:shadow-2xl transition-all duration-500 border-0 bg-white/90 backdrop-blur-sm overflow-hidden group hover:-translate-y-2">
+            <Card key={index} className="hover:shadow-2xl transition-all duration-500 border-0 bg-white/95 backdrop-blur-sm overflow-hidden group hover:-translate-y-2">
               <CardHeader className="pb-4 bg-gradient-to-br from-blue-50 to-cyan-50">
                 <div className="flex justify-between items-start mb-2">
                   <CardTitle className="text-xl font-bold text-slate-800 flex items-center gap-3">
@@ -210,26 +214,29 @@ const Menu = () => {
                       </Badge>
                     )}
                   </CardTitle>
-                  <span className="text-2xl font-bold text-blue-600">
-                    {item.price}
-                  </span>
                 </div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 mb-3">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className={`w-4 h-4 ${i < Math.floor(item.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />
                   ))}
                   <span className="text-sm text-slate-600 ml-2 font-medium">{item.rating}</span>
                 </div>
+                <div className="text-center">
+                  <span className="text-3xl font-bold text-blue-600">
+                    {item.pricePerScoop}
+                  </span>
+                  <p className="text-sm text-slate-500 font-medium">por bola</p>
+                </div>
               </CardHeader>
               <CardContent className="pt-4">
-                <p className="text-slate-600 text-sm leading-relaxed mb-6 font-medium">
+                <p className="text-slate-600 text-sm leading-relaxed mb-4 font-medium">
                   {item.description}
                 </p>
-                <Button 
-                  className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
-                >
-                  Agregar al Pedido
-                </Button>
+                <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg p-3 text-center">
+                  <p className="text-xs text-slate-600 font-medium">
+                    💡 Disponible en nuestro local
+                  </p>
+                </div>
               </CardContent>
             </Card>
           ))}
@@ -238,35 +245,68 @@ const Menu = () => {
         {/* Promociones mejoradas */}
         <div className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 rounded-3xl p-10 shadow-2xl border-4 border-white/20">
           <h3 className="text-4xl font-bold text-center text-white mb-10">
-            ✨ Promociones Especiales ✨
+            ✨ Combos Especiales ✨
           </h3>
           <div className="grid md:grid-cols-3 gap-8">
-            {promos.map((promo, index) => (
+            {combos.map((combo, index) => (
               <Card key={index} className="bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
                 <CardHeader className="text-center bg-gradient-to-br from-slate-50 to-blue-50">
                   <div className="flex justify-center mb-4">
                     <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full text-white">
-                      {promo.icon}
+                      {combo.icon}
                     </div>
                   </div>
                   <Badge className="w-fit mx-auto mb-3 bg-gradient-to-r from-pink-500 to-rose-400 text-white font-semibold px-4 py-1">
-                    {promo.badge}
+                    {combo.badge}
                   </Badge>
                   <CardTitle className="text-2xl text-slate-800 font-bold">
-                    {promo.title}
+                    {combo.title}
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="text-center pt-6">
-                  <p className="text-slate-600 mb-6 font-medium leading-relaxed">{promo.description}</p>
-                  <div className="text-3xl font-bold text-blue-600 mb-6">
-                    {promo.price}
+                  <p className="text-slate-600 mb-6 font-medium leading-relaxed">{combo.description}</p>
+                  <div className="text-3xl font-bold text-blue-600 mb-4">
+                    {combo.price}
                   </div>
-                  <Button className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-semibold py-3 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                    ¡Ordenar Ahora!
-                  </Button>
+                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-3">
+                    <p className="text-sm text-green-700 font-semibold">
+                      🏪 Disponible en tienda
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+
+        {/* Información adicional */}
+        <div className="mt-16 text-center">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-blue-100 max-w-4xl mx-auto">
+            <h4 className="text-2xl font-bold text-slate-800 mb-4">
+              📍 Visítanos en nuestro local
+            </h4>
+            <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+              Disfruta de nuestros helados artesanales en un ambiente familiar y acogedor. 
+              Todos nuestros sabores están disponibles para degustar en el momento.
+            </p>
+            <div className="grid md:grid-cols-2 gap-6 text-left">
+              <div className="bg-blue-50 rounded-lg p-4">
+                <h5 className="font-bold text-blue-800 mb-2">🍦 Tamaños disponibles:</h5>
+                <ul className="text-slate-600 space-y-1">
+                  <li>• 1 bola: Perfecto para probar</li>
+                  <li>• 2 bolas: Lo más popular</li>
+                  <li>• 3 bolas: Para los golosos</li>
+                </ul>
+              </div>
+              <div className="bg-cyan-50 rounded-lg p-4">
+                <h5 className="font-bold text-cyan-800 mb-2">🥄 Presentaciones:</h5>
+                <ul className="text-slate-600 space-y-1">
+                  <li>• En cono crujiente</li>
+                  <li>• En vaso premium</li>
+                  <li>• En barquillo artesanal</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
