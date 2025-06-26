@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,16 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Nevada Brand Colors
+				nevada: {
+					snow: '#FEFEFE',
+					'ice-blue': '#E8F4FD',
+					'glacier-blue': '#87CEEB',
+					'pastel-blue': '#B8E6F0',
+					vanilla: '#FFF8DC',
+					'soft-pink': '#FFE4E6',
+					'accent-pink': '#F8BBD9'
 				}
 			},
 			borderRadius: {
@@ -84,11 +95,24 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'sparkle': {
+					'0%, 100%': { opacity: '1', transform: 'scale(1)' },
+					'50%': { opacity: '0.3', transform: 'scale(1.1)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 3s ease-in-out infinite',
+				'sparkle': 'sparkle 2s ease-in-out infinite',
+			},
+			fontFamily: {
+				'nevada': ['Inter', 'system-ui', 'sans-serif'],
 			}
 		}
 	},
