@@ -1,9 +1,7 @@
 
 import React, { useState } from 'react';
-import { IceCreamCone, IceCreamBowl, Smile, Star, Award, Heart, MapPin, ImageIcon } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { IceCreamBowl, Star, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 
 const Menu = () => {
   const [activeCategory, setActiveCategory] = useState('clasicos');
@@ -11,41 +9,40 @@ const Menu = () => {
   const menuData = {
     clasicos: {
       title: 'Sabores Clásicos',
-      icon: <IceCreamCone className="h-6 w-6" />,
       description: 'Nuestros sabores tradicionales preparados con la receta perfecta',
       items: [
         { 
           name: 'Vainilla Premium', 
           description: 'Cremosa vainilla con esencia natural de Madagascar', 
-          pricePerScoop: '$ 4.000', 
+          price: '$ 4.000', 
           popular: true,
           rating: 4.9
         },
         { 
           name: 'Fresa Natural', 
           description: 'Con trozos de fresa fresca colombiana', 
-          pricePerScoop: '$ 4.200', 
+          price: '$ 4.200', 
           popular: false,
           rating: 4.7
         },
         { 
           name: 'Chocolate Belga', 
           description: 'Intenso chocolate importado de Bélgica', 
-          pricePerScoop: '$ 4.500', 
+          price: '$ 4.500', 
           popular: true,
           rating: 4.8
         },
         { 
           name: 'Arequipe Artesanal', 
           description: 'Dulce de leche casero tradicional', 
-          pricePerScoop: '$ 4.800', 
+          price: '$ 4.800', 
           popular: false,
           rating: 4.6
         },
         { 
           name: 'Limón Refrescante', 
           description: 'Cítrico natural y revitalizante', 
-          pricePerScoop: '$ 4.000', 
+          price: '$ 4.000', 
           popular: false,
           rating: 4.5
         }
@@ -53,34 +50,33 @@ const Menu = () => {
     },
     especiales: {
       title: 'Sabores Especiales',
-      icon: <Smile className="h-6 w-6" />,
       description: 'Creaciones únicas que conquistarán tu paladar',
       items: [
         { 
           name: 'Cheesecake con Fresa', 
           description: 'Cremoso queso Philadelphia con salsa de fresa', 
-          pricePerScoop: '$ 6.000', 
+          price: '$ 6.000', 
           popular: true,
           rating: 4.9
         },
         { 
           name: 'Brownie con Nuez', 
           description: 'Chocolate intenso con nueces pecanas crujientes', 
-          pricePerScoop: '$ 5.800', 
+          price: '$ 5.800', 
           popular: true,
           rating: 4.8
         },
         { 
           name: 'Mango Biche', 
           description: 'Tropical y refrescante con toque picante', 
-          pricePerScoop: '$ 5.000', 
+          price: '$ 5.000', 
           popular: false,
           rating: 4.7
         },
         { 
           name: 'Café con Leche', 
           description: 'Aromático café colombiano premium', 
-          pricePerScoop: '$ 5.200', 
+          price: '$ 5.200', 
           popular: false,
           rating: 4.6
         }
@@ -88,113 +84,112 @@ const Menu = () => {
     },
     adicionales: {
       title: 'Adicionales y Postres',
-      icon: <IceCreamBowl className="h-6 w-6" />,
       description: 'Complementos perfectos para tu experiencia NEVADA',
       items: [
         { 
           name: 'Malteadas Especiales', 
           description: 'Cremosas y espesas, preparadas al momento', 
-          pricePerScoop: '$ 12.000', 
+          price: '$ 12.000', 
           popular: true,
           rating: 4.8
         },
         { 
           name: 'Conos Premium', 
           description: 'Crujientes y dorados, horneados diariamente', 
-          pricePerScoop: '$ 2.000', 
+          price: '$ 2.000', 
           popular: false,
           rating: 4.5
         },
         { 
           name: 'Barquillos Artesanales', 
           description: 'Hechos en casa con receta familiar', 
-          pricePerScoop: '$ 3.000', 
+          price: '$ 3.000', 
           popular: false,
           rating: 4.6
         },
         { 
           name: 'Banana Split Familiar', 
           description: 'Experiencia completa para compartir (3 bolas)', 
-          pricePerScoop: '$ 18.000', 
+          price: '$ 18.000', 
           popular: true,
           rating: 4.9
-        },
-        { 
-          name: 'Paletas de Fruta', 
-          description: 'Naturales sin conservantes artificiales', 
-          pricePerScoop: '$ 6.000', 
-          popular: false,
-          rating: 4.4
         }
       ]
     }
   };
 
-  const combos = [
-    {
-      title: 'Combo Familiar Nevada',
-      description: '4 helados de 2 bolas + 2 conos premium + toppings especiales',
-      price: '$ 35.000',
-      badge: 'Ahorra $ 10.000',
-      icon: <Heart className="h-5 w-5" />
-    },
-    {
-      title: 'Combo Niños Felices',
-      description: '1 helado de 1 bola + cono + decoración especial',
-      price: '$ 8.000',
-      badge: 'Incluye Decoración',
-      icon: <Smile className="h-5 w-5" />
-    },
-    {
-      title: 'Línea Saludable',
-      description: 'Opciones endulzadas con stevia natural',
-      price: '$ 4.500',
-      badge: 'Sin Azúcar Añadida',
-      icon: <Award className="h-5 w-5" />
+  const renderStars = (rating) => {
+    const stars = [];
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+    
+    for (let i = 0; i < 5; i++) {
+      if (i < fullStars) {
+        stars.push(<Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />);
+      } else if (i === fullStars && hasHalfStar) {
+        stars.push(<Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />);
+      } else {
+        stars.push(<Star key={i} className="w-4 h-4 text-gray-300" />);
+      }
     }
-  ];
+    return stars;
+  };
 
   return (
-    <section id="sabores" className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50">
-      <div className="container mx-auto px-4">
-        {/* Header mejorado */}
-        <div className="text-center mb-20">
-          <h2 className="text-5xl lg:text-6xl font-bold mb-6">
+    <section id="sabores" className="py-20 bg-gradient-to-br from-gray-50 via-nevada-ice-blue to-nevada-pastel-blue relative overflow-hidden">
+      {/* Elementos decorativos de fondo */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-3 h-3 bg-gradient-to-r from-blue-200 to-white rounded-full animate-float opacity-60"
+            style={{
+              left: `${20 + i * 12}%`,
+              top: `${15 + (i % 3) * 25}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${5 + i * 0.2}s`
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Header de la sección */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
             <span className="text-slate-800">Nuestros </span>
-            <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 bg-clip-text text-transparent">Sabores</span>
+            <span className="nevada-text-gradient">Sabores</span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">
+          <p className="text-lg md:text-xl text-slate-600 max-width-4xl mx-auto leading-relaxed">
             Descubre nuestra selección de sabores únicos, preparados artesanalmente 
-            con los mejores ingredientes premium para toda la familia. 
-            <span className="text-blue-600 font-semibold block mt-2">¡Cada sabor cuenta una historia!</span>
+            con los mejores ingredientes premium para toda la familia.
+            <span className="text-blue-600 font-semibold"> ¡Cada sabor cuenta una historia!</span>
           </p>
-          <div className="flex items-center justify-center gap-2 mt-6 text-slate-700">
-            <MapPin className="h-5 w-5 text-blue-600" />
-            <span className="font-medium">Tienda física - Ven y disfruta en nuestro local</span>
-          </div>
         </div>
 
-        {/* Category Tabs mejorados - Más separación */}
-        <div className="flex justify-center mb-20">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 shadow-xl border border-blue-100">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Tabs de categorías */}
+        <div className="flex justify-center mb-12">
+          <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-2 shadow-2xl border border-blue-100">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
               {Object.entries(menuData).map(([key, category]) => (
                 <Button
                   key={key}
-                  variant={activeCategory === key ? "default" : "ghost"}
-                  className={`rounded-xl px-6 py-6 transition-all duration-300 font-semibold min-h-[100px] ${
+                  onClick={() => setActiveCategory(key)}
+                  className={`relative px-6 py-4 rounded-xl font-semibold text-lg transition-all duration-300 min-h-[80px] ${
                     activeCategory === key
                       ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg transform scale-105'
-                      : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
+                      : 'bg-transparent text-slate-700 hover:bg-blue-50 hover:text-blue-700'
                   }`}
-                  onClick={() => setActiveCategory(key)}
+                  variant="ghost"
                 >
-                  <div className="flex flex-col items-center gap-3 text-center">
-                    <div className="text-2xl">{category.icon}</div>
-                    <div>
-                      <div className="text-base font-bold">{category.title}</div>
-                      <div className="text-xs opacity-80 mt-1">{category.description}</div>
-                    </div>
+                  <div className="flex flex-col items-center space-y-2">
+                    <IceCreamBowl className="w-6 h-6" />
+                    <span className="text-sm font-bold">{category.title}</span>
+                    <span className="text-xs opacity-80">
+                      {key === 'clasicos' && 'Tradicionales'}
+                      {key === 'especiales' && 'Únicos'}
+                      {key === 'adicionales' && 'Complementos'}
+                    </span>
                   </div>
                 </Button>
               ))}
@@ -202,121 +197,113 @@ const Menu = () => {
           </div>
         </div>
 
-        {/* Menu Items mejorados con espacio para imágenes */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {menuData[activeCategory as keyof typeof menuData].items.map((item, index) => (
-            <Card key={index} className="hover:shadow-2xl transition-all duration-500 border-0 bg-white/95 backdrop-blur-sm overflow-hidden group hover:-translate-y-2">
-              {/* Espacio para imagen */}
-              <div className="h-48 bg-gradient-to-br from-blue-100 to-cyan-100 flex items-center justify-center">
-                <ImageIcon className="h-16 w-16 text-blue-400 opacity-50" />
-                <div className="absolute top-4 right-4">
-                  {item.popular && (
-                    <Badge className="bg-gradient-to-r from-pink-500 to-rose-400 text-white text-xs font-semibold">
-                      ¡Popular!
-                    </Badge>
-                  )}
-                </div>
+        {/* Grid de productos */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {menuData[activeCategory].items.map((item, index) => (
+            <div
+              key={index}
+              className="group bg-white/95 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-blue-100"
+            >
+              {/* Imagen del producto */}
+              <div className="relative h-48 bg-gradient-to-br from-nevada-ice-blue to-nevada-pastel-blue flex items-center justify-center overflow-hidden">
+                <IceCreamBowl className="w-16 h-16 text-blue-500 animate-float group-hover:scale-110 transition-transform duration-300" />
+                {item.popular && (
+                  <div className="absolute top-4 right-4 bg-gradient-to-r from-pink-500 to-pink-400 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
+                    ¡Popular!
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              
-              <CardHeader className="pb-4">
-                <CardTitle className="text-xl font-bold text-slate-800 mb-2">
+
+              {/* Contenido */}
+              <div className="p-6">
+                <h4 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-blue-700 transition-colors">
                   {item.name}
-                </CardTitle>
+                </h4>
+                
+                {/* Rating */}
                 <div className="flex items-center gap-1 mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className={`w-4 h-4 ${i < Math.floor(item.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} />
-                  ))}
+                  {renderStars(item.rating)}
                   <span className="text-sm text-slate-600 ml-2 font-medium">{item.rating}</span>
                 </div>
-                <div className="text-center">
-                  <span className="text-3xl font-bold text-blue-600">
-                    {item.pricePerScoop}
-                  </span>
-                  <p className="text-sm text-slate-500 font-medium">por bola</p>
+
+                {/* Precio */}
+                <div className="text-center mb-4">
+                  <div className="text-3xl font-bold text-blue-600">{item.price}</div>
+                  <div className="text-sm text-slate-500 font-medium">por bola</div>
                 </div>
-              </CardHeader>
-              <CardContent className="pt-4">
+
+                {/* Descripción */}
                 <p className="text-slate-600 text-sm leading-relaxed mb-4 font-medium">
                   {item.description}
                 </p>
-                <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg p-3 text-center">
-                  <p className="text-xs text-slate-600 font-medium">
-                    💡 Disponible en nuestro local
+
+                {/* Footer */}
+                <div className="bg-nevada-ice-blue rounded-lg p-3 text-center">
+                  <p className="text-xs text-slate-600 font-medium flex items-center justify-center gap-1">
+                    <Sparkles className="w-3 h-3" />
+                    Disponible en nuestro local
                   </p>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
 
-        {/* Promociones mejoradas con espacio para imágenes */}
-        <div className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 rounded-3xl p-10 shadow-2xl border-4 border-white/20">
-          <h3 className="text-4xl font-bold text-center text-white mb-10">
+        {/* Sección de combos especiales */}
+        <div className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 rounded-3xl p-8 md:p-12 shadow-2xl border-4 border-white/20">
+          <h3 className="text-3xl md:text-4xl font-bold text-white text-center mb-8">
             ✨ Combos Especiales ✨
           </h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            {combos.map((combo, index) => (
-              <Card key={index} className="bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
-                {/* Espacio para imagen */}
-                <div className="h-40 bg-gradient-to-br from-slate-100 to-blue-100 flex items-center justify-center">
-                  <ImageIcon className="h-12 w-12 text-slate-400 opacity-50" />
-                </div>
-                
-                <CardHeader className="text-center">
-                  <div className="flex justify-center mb-4">
-                    <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full text-white">
-                      {combo.icon}
-                    </div>
-                  </div>
-                  <Badge className="w-fit mx-auto mb-3 bg-gradient-to-r from-pink-500 to-rose-400 text-white font-semibold px-4 py-1">
-                    {combo.badge}
-                  </Badge>
-                  <CardTitle className="text-2xl text-slate-800 font-bold">
-                    {combo.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="text-center pt-6">
-                  <p className="text-slate-600 mb-6 font-medium leading-relaxed">{combo.description}</p>
-                  <div className="text-3xl font-bold text-blue-600 mb-4">
-                    {combo.price}
-                  </div>
-                  <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-3">
-                    <p className="text-sm text-green-700 font-semibold">
-                      🏪 Disponible en tienda
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* Información adicional */}
-        <div className="mt-16 text-center">
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-blue-100 max-w-4xl mx-auto">
-            <h4 className="text-2xl font-bold text-slate-800 mb-4">
-              📍 Visítanos en nuestro local
-            </h4>
-            <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-              Disfruta de nuestros helados artesanales en un ambiente familiar y acogedor. 
-              Todos nuestros sabores están disponibles para degustar en el momento.
-            </p>
-            <div className="grid md:grid-cols-2 gap-6 text-left">
-              <div className="bg-blue-50 rounded-lg p-4">
-                <h5 className="font-bold text-blue-800 mb-2">🍦 Tamaños disponibles:</h5>
-                <ul className="text-slate-600 space-y-1">
-                  <li>• 1 bola: Perfecto para probar</li>
-                  <li>• 2 bolas: Lo más popular</li>
-                  <li>• 3 bolas: Para los golosos</li>
-                </ul>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+              <div className="h-32 bg-gradient-to-br from-pink-100 to-pink-200 flex items-center justify-center">
+                <IceCreamBowl className="w-12 h-12 text-pink-500" />
               </div>
-              <div className="bg-cyan-50 rounded-lg p-4">
-                <h5 className="font-bold text-cyan-800 mb-2">🥄 Presentaciones:</h5>
-                <ul className="text-slate-600 space-y-1">
-                  <li>• En cono crujiente</li>
-                  <li>• En vaso premium</li>
-                  <li>• En barquillo artesanal</li>
-                </ul>
+              <div className="p-6 text-center">
+                <div className="bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-bold inline-block mb-3">
+                  Ahorra $ 10.000
+                </div>
+                <h4 className="text-xl font-bold text-slate-800 mb-2">Combo Familiar Nevada</h4>
+                <p className="text-slate-600 text-sm mb-4">4 helados de 2 bolas + 2 conos premium + toppings especiales</p>
+                <div className="text-2xl font-bold text-blue-600 mb-4">$ 35.000</div>
+                <div className="bg-green-50 rounded-lg p-2">
+                  <p className="text-green-700 text-xs font-semibold">¡Perfecto para compartir en familia!</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+              <div className="h-32 bg-gradient-to-br from-yellow-100 to-yellow-200 flex items-center justify-center">
+                <IceCreamBowl className="w-12 h-12 text-yellow-500" />
+              </div>
+              <div className="p-6 text-center">
+                <div className="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-bold inline-block mb-3">
+                  Incluye Decoración
+                </div>
+                <h4 className="text-xl font-bold text-slate-800 mb-2">Combo Niños Felices</h4>
+                <p className="text-slate-600 text-sm mb-4">1 helado de 1 bola + cono + decoración especial</p>
+                <div className="text-2xl font-bold text-blue-600 mb-4">$ 8.000</div>
+                <div className="bg-blue-50 rounded-lg p-2">
+                  <p className="text-blue-700 text-xs font-semibold">¡Ideal para los más pequeños!</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+              <div className="h-32 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                <IceCreamBowl className="w-12 h-12 text-green-500" />
+              </div>
+              <div className="p-6 text-center">
+                <div className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold inline-block mb-3">
+                  Sin Azúcar Añadida
+                </div>
+                <h4 className="text-xl font-bold text-slate-800 mb-2">Línea Saludable</h4>
+                <p className="text-slate-600 text-sm mb-4">Opciones endulzadas con stevia natural</p>
+                <div className="text-2xl font-bold text-blue-600 mb-4">$ 4.500</div>
+                <div className="bg-purple-50 rounded-lg p-2">
+                  <p className="text-purple-700 text-xs font-semibold">¡Cuida tu salud sin renunciar al sabor!</p>
+                </div>
               </div>
             </div>
           </div>
