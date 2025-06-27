@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { IceCreamBowl, Smile, ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -110,18 +109,18 @@ const Hero = () => {
         ))}
       </div>
 
-      <div className="container mx-auto px-4 py-20 relative z-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Contenido mejorado */}
-          <div className="text-center lg:text-left space-y-8">
-            <div className="space-y-6">
-              <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
+      <div className="container mx-auto px-4 py-12 md:py-20 relative z-20">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Contenido mejorado y optimizado para móviles */}
+          <div className="text-center lg:text-left space-y-6 md:space-y-8">
+            <div className="space-y-4 md:space-y-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight">
                 <span className="text-slate-800">Bienvenidos a</span>{' '}
                 <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-700 bg-clip-text text-transparent block animate-pulse">
                   NEVADA
                 </span>
               </h1>
-              <p className="text-xl lg:text-2xl font-medium leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium leading-relaxed px-2 lg:px-0">
                 <span className="text-slate-700">Donde cada helado es una experiencia única llena de </span>
                 <span className="text-blue-600 font-bold">frescura </span>
                 <span className="text-slate-700">y </span>
@@ -129,82 +128,82 @@ const Hero = () => {
               </p>
             </div>
 
-            <p className="text-lg text-slate-600 leading-relaxed font-medium">
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed font-medium px-2 lg:px-0">
               Descubre nuestra colección de sabores artesanales, desde clásicos irresistibles 
               hasta creaciones especiales que deleitarán a toda la familia en un ambiente 
               moderno y acogedor. <span className="text-blue-600 font-semibold">¡Una experiencia única te espera!</span>
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-semibold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-lg group">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start px-4 sm:px-0">
+              <Button className="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-sm md:text-lg group">
                 Conoce Nuestros Sabores
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
+                <ArrowRight className="ml-2 h-4 w-4 md:h-5 md:w-5 group-hover:translate-x-2 transition-transform duration-300" />
               </Button>
               <Button 
                 variant="outline" 
-                className="border-2 border-blue-600 text-blue-700 hover:bg-blue-600 hover:text-white font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className="border-2 border-blue-600 text-blue-700 hover:bg-blue-600 hover:text-white font-semibold px-6 md:px-8 py-3 md:py-4 rounded-full text-sm md:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
                 Ver Menú Completo
               </Button>
             </div>
 
-            {/* Estadísticas animadas mejoradas - Ampliadas */}
-            <div className="grid grid-cols-3 gap-6 pt-12">
-              <div className="text-center p-6 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-blue-100 min-h-[120px] flex flex-col justify-center">
-                <div className="text-3xl lg:text-4xl font-bold text-blue-600 mb-2">
+            {/* Estadísticas animadas mejoradas - Optimizadas para móviles */}
+            <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 pt-8 md:pt-12 px-2 sm:px-0">
+              <div className="text-center p-3 sm:p-4 md:p-6 bg-white/70 backdrop-blur-sm rounded-xl md:rounded-2xl shadow-lg border border-blue-100 min-h-[100px] md:min-h-[120px] flex flex-col justify-center">
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-blue-600 mb-1 md:mb-2">
                   {flavorsCount}+
                 </div>
-                <div className="text-xs lg:text-sm font-semibold text-slate-700 uppercase tracking-wide leading-tight">
+                <div className="text-xs sm:text-sm md:text-sm font-semibold text-slate-700 uppercase tracking-wide leading-tight">
                   Sabores Únicos
                 </div>
               </div>
-              <div className="text-center p-6 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-pink-100 min-h-[120px] flex flex-col justify-center">
-                <div className="text-3xl lg:text-4xl font-bold text-pink-500 mb-2">
+              <div className="text-center p-3 sm:p-4 md:p-6 bg-white/70 backdrop-blur-sm rounded-xl md:rounded-2xl shadow-lg border border-pink-100 min-h-[100px] md:min-h-[120px] flex flex-col justify-center">
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-pink-500 mb-1 md:mb-2">
                   {qualityCount}%
                 </div>
-                <div className="text-xs lg:text-sm font-semibold text-slate-700 uppercase tracking-wide leading-tight">
+                <div className="text-xs sm:text-sm md:text-sm font-semibold text-slate-700 uppercase tracking-wide leading-tight">
                   Artesanal
                 </div>
               </div>
-              <div className="text-center p-6 bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-blue-100 min-h-[120px] flex flex-col justify-center">
-                <div className="text-3xl lg:text-4xl font-bold text-blue-600 mb-2 flex items-center justify-center gap-1">
+              <div className="text-center p-3 sm:p-4 md:p-6 bg-white/70 backdrop-blur-sm rounded-xl md:rounded-2xl shadow-lg border border-blue-100 min-h-[100px] md:min-h-[120px] flex flex-col justify-center">
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-blue-600 mb-1 md:mb-2 flex items-center justify-center gap-1">
                   {starsCount}
                   {[...Array(Math.floor(starsCount))].map((_, i) => (
-                    <span key={i} className="text-yellow-400 animate-pulse text-lg">★</span>
+                    <span key={i} className="text-yellow-400 animate-pulse text-sm md:text-lg">★</span>
                   ))}
                 </div>
-                <div className="text-xs lg:text-sm font-semibold text-slate-700 uppercase tracking-wide leading-tight">
+                <div className="text-xs sm:text-sm md:text-sm font-semibold text-slate-700 uppercase tracking-wide leading-tight">
                   Experiencia
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Visual mejorado */}
-          <div className="relative flex justify-center lg:justify-end">
+          {/* Visual mejorado y optimizado para móviles */}
+          <div className="relative flex justify-center lg:justify-end mt-8 lg:mt-0">
             <div className="relative">
               {/* Círculo principal mejorado */}
-              <div className="w-80 h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-white via-blue-50 to-cyan-100 rounded-full shadow-2xl flex items-center justify-center relative overflow-hidden border-4 border-white/50">
-                <div className="text-center space-y-6">
-                  <IceCreamBowl className="h-32 w-32 text-blue-500 mx-auto animate-float drop-shadow-lg" />
-                  <div className="space-y-3">
-                    <div className="text-xl font-bold text-slate-800 bg-white/80 px-4 py-2 rounded-full shadow-md">
+              <div className="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-white via-blue-50 to-cyan-100 rounded-full shadow-2xl flex items-center justify-center relative overflow-hidden border-4 border-white/50">
+                <div className="text-center space-y-4 md:space-y-6">
+                  <IceCreamBowl className="h-20 w-20 sm:h-28 sm:w-28 md:h-32 md:w-32 text-blue-500 mx-auto animate-float drop-shadow-lg" />
+                  <div className="space-y-2 md:space-y-3">
+                    <div className="text-base sm:text-lg md:text-xl font-bold text-slate-800 bg-white/80 px-3 md:px-4 py-2 rounded-full shadow-md">
                       ¡Helados Frescos!
                     </div>
-                    <Smile className="h-10 w-10 text-pink-500 mx-auto animate-bounce" />
+                    <Smile className="h-8 w-8 md:h-10 md:w-10 text-pink-500 mx-auto animate-bounce" />
                   </div>
                 </div>
                 
                 {/* Elementos decorativos mejorados */}
-                <div className="absolute top-6 right-6 w-8 h-8 bg-gradient-to-r from-pink-400 to-pink-300 rounded-full animate-pulse shadow-lg" />
-                <div className="absolute bottom-12 left-8 w-6 h-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-full animate-float shadow-md" />
-                <div className="absolute top-1/3 left-6 w-4 h-4 bg-gradient-to-r from-blue-400 to-blue-300 rounded-full animate-sparkle shadow-sm" />
+                <div className="absolute top-4 md:top-6 right-4 md:right-6 w-6 h-6 md:w-8 md:h-8 bg-gradient-to-r from-pink-400 to-pink-300 rounded-full animate-pulse shadow-lg" />
+                <div className="absolute bottom-8 md:bottom-12 left-6 md:left-8 w-5 h-5 md:w-6 md:h-6 bg-gradient-to-r from-yellow-200 to-yellow-100 rounded-full animate-float shadow-md" />
+                <div className="absolute top-1/3 left-4 md:left-6 w-3 h-3 md:w-4 md:h-4 bg-gradient-to-r from-blue-400 to-blue-300 rounded-full animate-sparkle shadow-sm" />
               </div>
 
               {/* Elementos flotantes mejorados */}
-              <div className="absolute -top-8 -right-8 w-24 h-24 bg-gradient-to-br from-pink-300 to-pink-200 rounded-full opacity-90 animate-float shadow-xl border-2 border-white/30" style={{ animationDelay: '1s' }} />
-              <div className="absolute -bottom-6 -left-10 w-20 h-20 bg-gradient-to-br from-yellow-200 to-yellow-100 rounded-full opacity-80 animate-float shadow-lg border-2 border-white/30" style={{ animationDelay: '2s' }} />
-              <div className="absolute top-1/4 -right-4 w-16 h-16 bg-gradient-to-br from-blue-300 to-blue-200 rounded-full opacity-75 animate-float shadow-md border-2 border-white/30" style={{ animationDelay: '1.5s' }} />
+              <div className="absolute -top-6 md:-top-8 -right-6 md:-right-8 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br from-pink-300 to-pink-200 rounded-full opacity-90 animate-float shadow-xl border-2 border-white/30" style={{ animationDelay: '1s' }} />
+              <div className="absolute -bottom-4 md:-bottom-6 -left-6 md:-left-10 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-br from-yellow-200 to-yellow-100 rounded-full opacity-80 animate-float shadow-lg border-2 border-white/30" style={{ animationDelay: '2s' }} />
+              <div className="absolute top-1/4 -right-2 md:-right-4 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-blue-300 to-blue-200 rounded-full opacity-75 animate-float shadow-md border-2 border-white/30" style={{ animationDelay: '1.5s' }} />
             </div>
           </div>
         </div>
