@@ -83,7 +83,7 @@ const Footer = () => {
               </p>
             </div>
             <div className="text-slate-500 text-xs">
-              Web diseñada por Santiago Carvajal - 2025
+              Diseñada por Clicka Studio - 2025
             </div>
           </div>
         </div>
